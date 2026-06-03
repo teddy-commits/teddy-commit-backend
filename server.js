@@ -7,6 +7,7 @@ const connectDB = require('./config/database');
 const configureSocket = require('./config/socket');
 const adminRoutes = require('./routes/admin');
 const ChatHandlers = require('./socket/chatHandlers');
+const contactRoutes = require('./routes/contact');
 
 // Fix DNS for Windows
 dns.setServers(['8.8.8.8', '1.1.1.1']);
@@ -31,7 +32,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/admin', adminRoutes);
-
+app.use('/api/contact', contactRoutes);
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
